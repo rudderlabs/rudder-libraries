@@ -24,9 +24,9 @@ RudderStack provides some libraries out of the box which you can directly import
 
 Currently, RudderStack provides the following libraries:
 
-- [Encrypt/decrypt PII]()
-- [User agent parser]()
-- [Hashing PII]()
+- [Encrypt/decrypt PII](#encryptdecrypt-pii)
+- [User agent parser](#user-agent-parser)
+- [Hashing PII](#hashing-pii)
 
 ## Encrypt/decrypt PII
 
