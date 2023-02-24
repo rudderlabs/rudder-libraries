@@ -54,7 +54,7 @@ export function transformEvent(event, metadata) {
 
 ### Hashing PII
 
-This library has two hash functions that hide sensitive PII like the user's email, birthday, social security number, etc. You can use either MD5 or SHA256 encryption to hash your PII. Refer to the library's code [here](https://github.com/rudderlabs/rudder-libraries/tree/main/libraries/hash).
+This library has two hash functions that hide sensitive PII like the user's email, birthday, social security number, etc. You can use either **MD5**, **SHA256**, or **cyrb53** to hash your PII. Refer to the library's code [here](https://github.com/rudderlabs/rudder-libraries/tree/main/libraries/hash).
 
 ## Import structure
 
