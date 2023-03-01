@@ -32,6 +32,39 @@ Currently, RudderStack provides the following libraries:
 
 This library lets you encrypt and decrypt PII including those that are stored in cookies. Refer to the library's code [here](https://github.com/rudderlabs/rudder-libraries/tree/main/libraries/encrypt/v1).
 
+The code snippet for encrypt/decrypt template is shown below:
+
+```javascript
+import { JSEncrypt } from "@rs/encrypt/v1";
+
+const publicKey = `<RSA_PUBLIC_KEY>` // Add RSA public key
+
+export function transformEvent(event, metadata) {
+    const email = event.context?.traits?.email;
+    if (email) {
+        const crypt = new JSEncrypt();
+        crypt.setKey(publicKey);
+        event.context.traits.email = crypt.encrypt(email);
+    }
+    return event;
+}
+```
+```javascript
+import { JSEncrypt } from "@rs/encrypt/v1";
+
+const privateKey = `<RSA_PRIVATE_KEY>` // Add RSA private key
+
+export function transformEvent(event, metadata) {
+    const email = event.context?.traits?.email;
+    if (email) {
+        const crypt = new JSEncrypt();
+        crypt.setKey(privateKey);
+        event.context.traits.email = crypt.decrypt(email);
+    }
+    return event;
+}
+```
+
 ### User agent parser
 
 The **Parse user agent transformation template** imports this library to add the user's browser, engine, OS, device, and CPU-related information to the events. Refer to the library's code [here](https://github.com/rudderlabs/rudder-libraries/tree/main/libraries/userAgentParser/v1).
@@ -54,7 +87,19 @@ export function transformEvent(event, metadata) {
 
 ### Hashing PII
 
-This library has two hash functions that hide sensitive PII like the user's email, birthday, social security number, etc. You can use either **MD5**, **SHA256**, or **cyrb53** to hash your PII. Refer to the library's code [here](https://github.com/rudderlabs/rudder-libraries/tree/main/libraries/hash).
+This library provides three hash functions that hide sensitive PII like the user's email, birthday, social security number, etc. You can use either **MD5**, **SHA256**, or **cyrb53** to hash your PII. Refer to the library's code [here](https://github.com/rudderlabs/rudder-libraries/tree/main/libraries/hash).
+
+The code snippet for hash template is shown below:
+
+```javascript
+import { sha256 } from "@rs/hash/v1";
+
+export function transformEvent(event, metadata) {
+    const email = event.context?.traits?.email;
+    if (email) event.context.traits.email = sha256(email);
+    return event;
+}
+```
 
 ## Import structure
 
@@ -67,7 +112,7 @@ Use the following structure to import the Rudderstack libraries:
 A sample import statement is shown below:
 
 ```javascript
-import { sha256 } from "@rs/hash/v1";
+import { md5 } from "@rs/hash/v1";
 ```
 
 ## Contribute
