@@ -262,7 +262,6 @@ export function localizeDeviceModel(event) {
   let devicePlatform = event?.context?.os?.name;
   let currentDeviceModel = event?.context?.device?.model;
   if (devicePlatform && isAppleFamily(devicePlatform) && currentDeviceModel) {
-    event.context.device.model = getLocalizedDeviceModel(currentDeviceModel);
+    return getLocalizedDeviceModel(currentDeviceModel);
   }
-  return event;
 }
