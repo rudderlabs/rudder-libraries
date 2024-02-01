@@ -237,7 +237,7 @@ const Others = {
   Xserve: 'Xserve',
 };
 
-function getLocalizedDeviceModel(deviceModel) {
+function getDeviceModel(deviceModel) {
   if (iPhone[deviceModel]) return iPhone[deviceModel];
   if (iPod[deviceModel]) return iPod[deviceModel];
   if (iPad[deviceModel]) return iPad[deviceModel];
@@ -253,15 +253,16 @@ function getLocalizedDeviceModel(deviceModel) {
 function isAppleFamily(platform) {
   const appleOsNames = ['ios', 'watchos', 'ipados', 'tvos'];
   if (typeof platform === 'string') {
-    return appleOsNames.includes(platform?.toLowerCase());
+    return appleOsNames.includes(platform.trim().toLowerCase());
   }
   return false;
 }
 
-export function localizeDeviceModel(event) {
-  let devicePlatform = event?.context?.os?.name;
-  let currentDeviceModel = event?.context?.device?.model;
-  if (devicePlatform && isAppleFamily(devicePlatform) && currentDeviceModel) {
-    return getLocalizedDeviceModel(currentDeviceModel);
+export function getLocalizedDeviceModel(event) {
+  const devicePlatform = event?.context?.os?.name;
+  const currentDeviceModel = event?.context?.device?.model;
+  if (!devicePlatform || !currentDeviceModel || !isAppleFamily(devicePlatform)) {
+    return;
   }
+  return getDeviceModel(currentDeviceModel);
 }
