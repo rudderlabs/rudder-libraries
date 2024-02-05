@@ -1,3 +1,8 @@
+/**
+ * These mappings are based on Open Source Information, we have tried to keep it as accurate as possible.
+ * if you find any discrepancies, please open an issue on the GitHub repository.
+ */
+
 // == iPhone ==
 const iPhone = {
   'iPhone1,1': 'iPhone 1',
