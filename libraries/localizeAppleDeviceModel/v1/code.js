@@ -1,3 +1,8 @@
+/**
+ * These mappings are based on Open Source Information, We have tried to keep it as accurate as possible.
+ * If you find any discrepancies, please open an issue on the GitHub repository: https://github.com/rudderlabs/rudder-libraries.
+ */
+
 // == iPhone ==
 const iPhone = {
   'iPhone1,1': 'iPhone 1',
