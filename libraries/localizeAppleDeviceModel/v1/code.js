@@ -1,6 +1,6 @@
 /**
- * These mappings are based on Open Source Information, we have tried to keep it as accurate as possible.
- * if you find any discrepancies, please open an issue on the GitHub repository.
+ * These mappings are based on Open Source Information, We have tried to keep it as accurate as possible.
+ * If you find any discrepancies, please open an issue on the GitHub repository: https://github.com/rudderlabs/rudder-libraries.
  */
 
 // == iPhone ==
